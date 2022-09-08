@@ -1,38 +1,44 @@
+.form-control {
+  border-radius: 0px !important;
+}
+
+input, select, option, button {
+  border-radius: 0px !important;
+}
+/* 
+div {
+  margin: 0px !important;
+  padding: 0px !important;
+} */
+
+.input-group-text {
+  border-radius: 0px !important;
+  margin: 0px !important;
+  padding: 0px 0px 0px 10px !important;
+}
+
+.card {
+  margin-top: 25px !important;
+  border-radius: 0px !important;
+}
+
 .App {
-  text-align: center;
+  margin-bottom: 100px !important;
+}
+/* 
+div.fade.in.modal {
+  display: flex !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.modal-dialog {
+  margin: 10% auto auto auto !important;
+  padding: 0px !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.modal-content {
+  width: 500px !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+textarea {
+  margin: 5px !important;
+} */

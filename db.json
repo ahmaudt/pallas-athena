@@ -1,0 +1,42 @@
+{
+    "students": [
+        {
+            "ugaid": "810176808",
+            "MyID": "ahmaud",
+            "firstName": "Ahmaud",
+            "lastName": "Templeton",
+            "matricTerm": "202208",
+            "gradTerm": "202602",
+            "majorOne": "PHIL",
+            "majorTwo": "",
+            "minorOne": "",
+            "minorTwo": "",
+            "academicPlans": [
+                {
+                    "yearOne": ""
+                }
+            ]
+        }
+    ],
+    "programs": [
+        {
+            "majorName": "Human Development and Family Science",
+            "degreeName": "Bachelor of Science in Family Consumer Science",
+            "degreeCode": "BSFCS",
+            "majorCode": "HDFS",
+            "description": "",
+            "requirements": [
+                "Area I - Foundational",
+                "Area II - Life Science",
+                "Area II - Physical Science",
+                "Area II - Lab",
+                "Area III - Quantitative Reasoning",
+                "Area IV - World Lang/Culture",
+                "Area IV - Humanities/Arts",
+                "Area V - Social Sciences",
+                "Area F/VI - Intro/Major Prerequisites",
+                "General Electives"
+            ]
+        }
+    ]
+}
