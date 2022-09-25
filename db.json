@@ -13,8 +13,129 @@
             "minorTwo": "",
             "academicPlans": [
                 {
-                    "yearOne": ""
-                }
+                    "id": 202208,
+                    "term": "Fall 2022",
+                    "recommendations": [
+                        {
+                            "id": 1,
+                            "name": "PHIL 1101",
+                            "description": "Introduction to Philosophy",
+                            "status": "Completed",
+                            "term": "Fall 2021",
+                            "grade": "A"
+                        },
+                        {
+                            "id": 2,
+                            "name": "PHIL 1102",
+                            "description": "Introduction to Philosophy",
+                            "status": "Completed",
+                            "term": "Spring 2022",
+                            "grade": "A"
+                        },
+                        {
+                            "id": 3,
+                            "name": "PHIL 1103",
+                            "description": "Introduction to Philosophy",
+                            "status": "Completed",
+                            "term": "Fall 2022",
+                            "grade": "A"
+                        },
+                        {
+                            "id": 4,
+                            "name": "PHIL 1104",
+                            "description": "Introduction to Philosophy",
+                            "status": "Completed",
+                            "term": "Spring 2023",
+                            "grade": "A"
+                        },
+                        {
+                            "id": 5,
+                            "name": "PHIL 1105",
+                            "description": "Introduction to Philosophy",
+                            "status": "Completed",
+                            "term": "Fall 2023",
+                            "grade": "A"
+                        },
+                        {
+                            "id": 6,
+                            "name": "PHIL 1106",
+                            "description": "Introduction to Philosophy",
+                            "status": "Completed",
+                            "term": "Spring 2024",
+                            "grade": "A"
+                        },
+                        {
+                            "id": 7,
+                            "name": "PHIL 1107",
+                            "description": "Introduction to Philosophy",
+                            "status": "Completed",
+                            "term": "Fall 2024",
+                            "grade": "A"
+                        }
+                    ]
+                },
+               {
+                "id": 202302,
+                "term": "Spring 2023",
+                "recommendations": [
+                    {
+                        "id": 1,
+                        "name": "PHIL 1101",
+                        "description": "Introduction to Philosophy",
+                        "status": "Completed",
+                        "term": "Fall 2021",
+                        "grade": "A"
+                    },
+                    {
+                        "id": 2,
+                        "name": "PHIL 1102",
+                        "description": "Introduction to Philosophy",
+                        "status": "Completed",
+                        "term": "Spring 2022",
+                        "grade": "A"
+                    },
+                    {
+                        "id": 3,
+                        "name": "PHIL 1103",
+                        "description": "Introduction to Philosophy",
+                        "status": "Completed",
+                        "term": "Fall 2022",
+                        "grade": "A"
+                    },
+                    {
+                        "id": 4,
+                        "name": "PHIL 1104",
+                        "description": "Introduction to Philosophy",
+                        "status": "Completed",
+                        "term": "Spring 2023",
+                        "grade": "A"
+                    },
+                    {
+                        "id": 5,
+                        "name": "PHIL 1105",
+                        "description": "Introduction to Philosophy",
+                        "status": "Completed",
+                        "term": "Fall 2023",
+                        "grade": "A"
+                    },
+                    {
+                        "id": 6,
+                        "name": "PHIL 1106",
+                        "description": "Introduction to Philosophy",
+                        "status": "Completed",
+                        "term": "Spring 2024",
+                        "grade": "A"
+                    },
+                    {
+                        "id": 7,
+                        "name": "PHIL 1107",
+                        "description": "Introduction to Philosophy",
+                        "status": "Completed",
+                        "term": "Fall 2024",
+                        "grade": "A"
+                    }
+                ]
+               }
             ]
         }
     ],

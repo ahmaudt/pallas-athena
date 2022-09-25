@@ -4,13 +4,13 @@ import { Button, Card, Col, Container, Form, FormControl, InputGroup, Modal, Row
 import PlanInput from "./PlanInput";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, light, thin, duotone, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
-import ModalNoteForm from "./ModalNoteForm";
 
-function PlanCard({ onAddRow, onOptionSelect, onDeleteRow, programs, reqs, rowCount, onModalOpen, onModalClose, show }) {
+function PlanCard({ onAddRow, onOptionSelect, onDeleteRow, programs, reqs, rowCount, onModalOpen, onModalClose, show, onCoursesNotesSubmit}) {
     const [notes, setNotes] = useState([]);
-
+    const [courses, setCourses] = useState([]);
   
     return (
+        <form>
         <Card className='course-recommendations'>
             <Card.Header>
                 <h2>Academic Plan</h2>
@@ -32,7 +32,7 @@ function PlanCard({ onAddRow, onOptionSelect, onDeleteRow, programs, reqs, rowCo
                         </Row>
                     {[...Array(rowCount)].map((_, i) => (
                         <InputGroup style={{ margin: "0px", padding: "0px" }}>
-                            <PlanInput show={show} onModalOpen={onModalOpen} onModalClose={onModalClose}  programs={programs} reqs={reqs} index={i} onOptionSelect={onOptionSelect} onDeleteRow={onDeleteRow} notes={notes} setNotes={setNotes} />
+                        <PlanInput notes={notes} setNotes={setNotes} courses={courses} setCourses={setCourses} onCoursesNotesSubmit={onCoursesNotesSubmit} show={show} onModalOpen={onModalOpen} onModalClose={onModalClose}  programs={programs} reqs={reqs} index={i} onOptionSelect={onOptionSelect} onDeleteRow={onDeleteRow} />
                             {/* removed modal component */}
                         </InputGroup>
                     ))}    
@@ -40,6 +40,8 @@ function PlanCard({ onAddRow, onOptionSelect, onDeleteRow, programs, reqs, rowCo
                 </InputGroup>
             </Card.Body>
         </Card>
+        <button type="submit">submit</button>
+        </form>
     )
 
 }
