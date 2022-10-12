@@ -1,8 +1,17 @@
 import React from "react";
 import { Row, Col, Card, CardBody, FormGroup, FormControl } from "react-bootstrap";
 import CardHeader from "react-bootstrap/esm/CardHeader";
+import { useEffect, useState } from "react";
 
 function AcademicPlan() {
+  const [student, setStudent] = useState({});
+
+  useEffect(() => {
+    fetch("http://localhost:6001/students")
+      .then((r) => r.json())
+      .then((data) => setStudent(data[0]));
+  }, []);
+
   return (
     <Row>
       <Col>

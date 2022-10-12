@@ -1,62 +1,54 @@
-import React from 'react';
-import { Row, Col, Container, InputGroup  } from 'react-bootstrap';
+import React from "react";
+import { useEffect, useState } from "react";
+import { Card, Col, Row, Table } from "react-bootstrap";
+import CardHeader from "react-bootstrap/esm/CardHeader";
+import { useParams } from "react-router-dom";
+import StudentListItem from "./StudentListItem";
 
-function StudentList({ students }) {
-    const listStudents = students.map((student) => (
-        <li key={student.ugaid}>
-            {student.lastName}, {student.firstName}
-        </li>
+function StudentList({ students, onSelectStudent }) {
+  const renderStudents = () => {
+    return students.map((s) => (
+      <StudentListItem
+        key={s.id}
+        firstName={s.firstName}
+        lastName={s.lastName}
+        majorOne={s.majorOne}
+        id={s.id}
+        student={s}
+        onSelectStudent={onSelectStudent}
+      />
     ));
+  };
 
-    return (
-        <div>
-            <h2>Students</h2>
-            <ul>
-                {listStudents}
-            </ul>
-            <Container>
-                <Row>
-                    <Col>
-                        <InputGroup.Text>Last Name</InputGroup.Text>
-                    </Col>
-                    <Col>
-                        <InputGroup.Text>First Name</InputGroup.Text>
-                    </Col>
-                    <Col>
-                        <InputGroup.Text>Primary Major</InputGroup.Text>
-                    </Col>
-                    <Col>
-                        <InputGroup.Text>Matriculation Term</InputGroup.Text>
-                    </Col>
-                    <Col>
-                        <InputGroup.Text>Graduation Term</InputGroup.Text>
-                    </Col>
-                </Row>
-                {
-                    students.map((student) => (
-                        <Row key={student.ugaid}>
-                            <Col>
-                                <InputGroup.Text>{student.lastName}</InputGroup.Text>
-                            </Col>
-                            <Col>
-                                <InputGroup.Text>{student.firstName}</InputGroup.Text>
-                            </Col>
-                            <Col>
-                                <InputGroup.Text>{student.majorOne}</InputGroup.Text>
-                            </Col>
-                            <Col>
-                                <InputGroup.Text>{student.matricTerm}</InputGroup.Text>
-                            </Col>
-                            <Col>
-                                <InputGroup.Text>{student.gradTerm}</InputGroup.Text>
-                            </Col>
-                        </Row>
-                    ))
-                }
-            </Container>
-        </div>
-        
-    )
+  return (
+    <React.Fragment>
+      <Row>
+        <Col>
+          <Card style={{ padding: "0" }}>
+            <CardHeader>
+              <h2>Students</h2>
+            </CardHeader>
+            <Card.Body>
+              <Table striped borderless size="sm">
+                <thead>
+                  <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Major</th>
+                    <th>Student ID</th>
+                    <th>View</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {renderStudents()}
+                </tbody>
+              </Table>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </React.Fragment>
+  );
 }
 
 export default StudentList;
