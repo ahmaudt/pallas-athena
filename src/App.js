@@ -12,8 +12,24 @@ import Home from "./components/Home";
 function App() {
   // students is the state variable for the student list
   const [students, setStudents] = useState([]);
+  const [selectedStudent, setSelectedStudent] = useState({
+    firstName: "",
+    lastName: "",
+    majorOne: "",
+    majorTwo: "",
+    minorOne: "",
+    minorTwo: "",
+    id: "",
+    matricTerm: "",
+    gradTerm: "",
+    ugaMyId: "",
+    preProfessional: "",
+    earnedHrs: "",
+    remainingHrs: "",
+    requiredHrs: "",
+  });
+  
   // selectedStudent is the student that is currently selected from the list
-  const [selectedStudent, setSelectedStudent] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:6001/students")
@@ -36,8 +52,6 @@ function App() {
     setStudents(updatedStudents);
   }
 
-  console.log(students);
-
   return (
     <div className="App">
       <Container fluid>
@@ -50,8 +64,8 @@ function App() {
             </nav>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route exact path="/students" element={<StudentList student={selectedStudent} students={students} onSelectStudent={handleSelectStudent} />} />
-              <Route exact path="/students/:id" element={<StudentDetail student={selectedStudent} onSelectStudent={handleSelectStudent} onEditStudent={handleEditStudent} />} />
+              <Route exact path="/students" element={<StudentList students={students} onSelectStudent={handleSelectStudent} />} />
+              <Route exact path="/students/:id" element={<StudentDetail student={selectedStudent} onEditStudent={handleEditStudent} />} />
             </Routes>
           </Col>
           <Col sm="auto"></Col>
