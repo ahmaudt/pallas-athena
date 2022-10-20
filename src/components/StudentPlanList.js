@@ -1,8 +1,17 @@
 import React from "react";
-import { Card, Col, Row, Table} from "react-bootstrap";
+import { Button, Card, Col, Row, Table} from "react-bootstrap";
 import CardHeader from "react-bootstrap/esm/CardHeader";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import AcademicPlan from "./AcademicPlan";
 
-function PlanList() {
+function PlanList({ student, plans, onSelectPlan }) {
+  const studentPlans = plans.filter((pl) => pl.studentId === student.id);
+  
+  const planList = studentPlans.map((p) => {
+    return <AcademicPlan plan={p} key={p.id} adviseTerm={p.adviseTerm} adviseYear={p.adviseYear} onSelectPlan={onSelectPlan} />
+  });
+
     return (
         <React.Fragment>
             <Row>
@@ -17,21 +26,11 @@ function PlanList() {
                           <tr>
                             <th>Term</th>
                             <th>Year</th>
+                            <th>View</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>Fall</td>
-                            <td>2022</td>
-                          </tr>
-                          <tr>
-                            <td>Spring</td>
-                            <td>2023</td>
-                          </tr>
-                          <tr>
-                            <td>Summer</td>
-                            <td>2023</td>
-                          </tr>
+                          {planList}
                         </tbody>
                       </Table>
                     </Card.Body>

@@ -6,8 +6,7 @@ import { useParams } from "react-router-dom";
 import StudentListItem from "./StudentListItem";
 
 function StudentList({ students, onSelectStudent }) {
-  const renderStudents = () => {
-    return students.map((s) => (
+  const renderStudents = students.map((s) => (
       <StudentListItem
         key={s.id}
         firstName={s.firstName}
@@ -18,7 +17,6 @@ function StudentList({ students, onSelectStudent }) {
         onSelectStudent={onSelectStudent}
       />
     ));
-  };
 
   return (
     <React.Fragment>
@@ -40,7 +38,7 @@ function StudentList({ students, onSelectStudent }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {renderStudents()}
+                  {renderStudents}
                 </tbody>
               </Table>
             </Card.Body>
