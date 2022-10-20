@@ -16,18 +16,6 @@ import NewAcademicPlanForm from "./components/NewAcademicPlanForm";
 function App() {
   // students is the state variable for the student list
   const [students, setStudents] = useState([]);
-  const [plans, setPlans] = useState([]);
-  const [plan, setplan] = useState({
-        studentId: "",
-        adviseTerm: "",
-        adviseYear: "",
-        recommendations: []
-    });
-
-    function handleChangeForm(recommendations) {
-      setplan(...plan.recommendations, recommendations);
-    }
-  
   const [selectedStudent, setSelectedStudent] = useState({
     id: "",
     ugaMyId: "",
@@ -43,6 +31,17 @@ function App() {
     requiredHrs: 0,
     remainingHrs: 0,
   });
+  const [plans, setPlans] = useState([]);
+  const [workingPlan, setWorkingPlan] = useState({
+        studentId: "",
+        adviseTerm: "",
+        adviseYear: "",
+        recommendations: []
+    });
+
+    function handleChangeForm(recommendations) {
+      setWorkingPlan(...workingPlan.recommendations, recommendations);
+    }
   
   // selectedStudent is the student that is currently selected from the list
 
@@ -57,8 +56,6 @@ function App() {
       .then((r) => r.json())
       .then((data) => setPlans(data));
   }, []);
-
-  console.log(plans);
 
   const handleSelectStudent = (student) => {
     setSelectedStudent(student);
@@ -91,7 +88,7 @@ function App() {
       if (p.id === plan.id) return plan;
       return p;
     });
-    setplan(plan);
+    setWorkingPlan(plan);
     setPlans(updatedPlans);
   }
 
@@ -114,9 +111,9 @@ function App() {
             </Nav>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route exact path="/students" element={<StudentList students={students} onSelectStudent={handleSelectStudent} onSelectPlan={setplan} />} />
-              <Route exact path="/students/:id" element={<StudentDetail plans={plans} student={selectedStudent} onEditStudent={handleEditStudent} onSelectPlan={setplan} />} />
-              <Route path="/plans/:id" element={<AcademicPlanForm onUpdatePlan={handleChangeForm} plan={plan} />} />
+              <Route exact path="/students" element={<StudentList students={students} onSelectStudent={handleSelectStudent} onSelectPlan={setWorkingPlan} />} />
+              <Route exact path="/students/:id" element={<StudentDetail plans={plans} student={selectedStudent} onEditStudent={handleEditStudent} onSelectPlan={setWorkingPlan} />} />
+              <Route path="/plans/:id" element={<AcademicPlanForm onUpdatePlan={handleChangeForm} plan={workingPlan} />} />
               <Route path="/new-student" element={<NewStudentForm onAddStudent={handleAddStudent} />} />
               <Route path="/new-plan" element={<NewAcademicPlanForm onAddPlan={handleAddPlan} student={selectedStudent} />} />
             </Routes>

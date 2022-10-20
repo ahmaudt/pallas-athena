@@ -13,34 +13,33 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function AcademicPlanForm({ onAddPlan, student }) {
+  console.log(student);
   const [rowCount, setRowCount] = useState(4);
 
   const [plan, setPlan] = useState({
     studentId: student.id,
-    advisingTerm: student.adviseTerm,
+    advisingTerm: student.advisingTerm,
     currentTerm: student.currentTerm,
     recommendations: [
-  
+      {
+        requirement: "",
+        course: "",
+        altCourse: ""
+      }
     ]
   });
 
   function handleSubmit(e) {
     e.preventDefault();
-    useEffect(() => {
-      fetch(`http://localhost:6001/plans`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          },
-        body: JSON.stringify({
-          studentId: student.id,
-          adviseTerm: student.adviseTerm,
-          currentTerm: student.currentTerm,
-        }),
-      })
-        .then((r) => r.json())
-        .then((data) => onAddPlan(data));
-    });
+    fetch(`http://localhost:6001/plans`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(plan),
+    })
+      .then((r) => r.json())
+      .then((data) => onAddPlan(data));
   }
 
   function handleAddRecommendation(i, name, value) {
@@ -69,7 +68,6 @@ function AcademicPlanForm({ onAddPlan, student }) {
         ],
       });
     } 
-    console.log(plan.recommendations);
   }
 
 
@@ -86,6 +84,7 @@ function AcademicPlanForm({ onAddPlan, student }) {
   const { requirement, course, altCourse } = plan.recommendations;
 
   return (
+    <Form onSubmit={handleSubmit}>
     <Row>
       <Col>
         <Card style={{ padding: "0" }}>
@@ -94,7 +93,6 @@ function AcademicPlanForm({ onAddPlan, student }) {
             <Button className="float-end" variant="primary" onClick={handleAddRow}>Add Row</Button>
           </CardHeader>
           <Card.Body style={{ padding: "0" }}>
-            <Form>
               <FormGroup>
                 {[...Array(rowCount)].map((r, i) => (
                   <Row key={i}>
@@ -131,7 +129,6 @@ function AcademicPlanForm({ onAddPlan, student }) {
                 </Row>
                 ))}
               </FormGroup>
-            </Form>
           </Card.Body>
           <Card.Footer>
             <Button variant="success" type="submit">
@@ -141,6 +138,8 @@ function AcademicPlanForm({ onAddPlan, student }) {
         </Card>
       </Col>
     </Row>
+    </Form>
+
   );
 }
 

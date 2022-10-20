@@ -4,12 +4,13 @@ import CardHeader from "react-bootstrap/esm/CardHeader";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AcademicPlan from "./AcademicPlan";
+import { Link } from "react-router-dom";
 
 function PlanList({ student, plans, onSelectPlan }) {
   const studentPlans = plans.filter((pl) => pl.studentId === student.id);
   
   const planList = studentPlans.map((p) => {
-    return <AcademicPlan plan={p} key={p.id} adviseTerm={p.adviseTerm} adviseYear={p.adviseYear} onSelectPlan={onSelectPlan} />
+    return <AcademicPlan plan={p} key={p.id} currentTerm={p.currentTerm} advisingTerm={p.advisingTerm} onSelectPlan={onSelectPlan} />
   });
 
     return (
@@ -19,15 +20,17 @@ function PlanList({ student, plans, onSelectPlan }) {
                   <Card style={{ padding: "0" }}>
                     <CardHeader>
                       <h2 className="float-start">Academic Plans</h2>
-                      <Button className="float-end" variant="success" href={`/new-plan`}>New Plan</Button>
+                      <Link to={`/new-plan`}>
+                        <Button className="float-end" variant="success">New Plan</Button>
+                      </Link>
                     </CardHeader>
                     <Card.Body>
                       <Table striped borderless size="sm">
                         <thead>
                           <tr>
-                            <th>Term</th>
-                            <th>Year</th>
-                            <th>View</th>
+                            <th>Term Created</th>
+                            <th>Term Advised For</th>
+                            <th>View Plan</th>
                           </tr>
                         </thead>
                         <tbody>

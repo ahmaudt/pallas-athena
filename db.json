@@ -215,6 +215,25 @@
           "requirement": "major requirement"
         }
       ]
+    },
+    {
+      "studentId": 1,
+      "advisingTerm": "Summer 2023",
+      "currentTerm": "Fall 2022",
+      "recommendations": [
+        {
+          "requirement": "",
+          "course": "",
+          "altCourse": ""
+        },
+        {
+          "id": 1,
+          "requirement": "Major required: Adolescent Development",
+          "course": "HDFS 4330",
+          "altCourse": "HDFS 3920"
+        }
+      ],
+      "id": 4
     }
   ]
 }
