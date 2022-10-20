@@ -43,28 +43,35 @@ function AcademicPlanForm({ onAddPlan, student }) {
     });
   }
 
-  // function handleRecommendationChange(index, name, value) {
-  //   const updatedRecommendations = plan.recommendations.map(
-  //     (recommendation, i) => {
-  //       if (i === index) {
-  //         return { ...recommendation, [name]: value };
-  //       }
-  //       return recommendation;
-  //     }
-  //   );
-  //   setPlan((plan) => ({
-  //     ...plan,
-  //     recommendations: updatedRecommendations,
-  //   }));
-  //   console.log(updatedRecommendations)
-  // }
-
   function handleAddRecommendation(i, name, value) {
     // check to see if plan contains recommendation
-    
-    console.log(plan.recommendations[0])
-    // if it does, add to it
-}
+    let rowId = i + 1;
+    let recommendation = plan.recommendations.find(
+      (recommendation) => recommendation.id === rowId
+    );
+    if (recommendation) {
+      // if recommendation exists, update it
+      setPlan({
+        ...plan,
+        recommendations: plan.recommendations.map((recommendation) =>
+          recommendation.id === rowId
+            ? { ...recommendation, [name]: value }
+            : recommendation
+        ),
+      });
+    } else {
+      // if recommendation does not exist, create it
+      setPlan({
+        ...plan,
+        recommendations: [
+          ...plan.recommendations,
+          { id: rowId, [name]: value },
+        ],
+      });
+    } 
+    console.log(plan.recommendations);
+  }
+
 
   function handleAddRow() {
     let newRow = { requirement: "", course: "", altCourse: "" };
@@ -84,7 +91,7 @@ function AcademicPlanForm({ onAddPlan, student }) {
         <Card style={{ padding: "0" }}>
           <CardHeader>
             <h2 className="float-start">Student Plan</h2>
-            <Button className="float-end" variant="success" onClick={handleAddRow}>Add Row</Button>
+            <Button className="float-end" variant="primary" onClick={handleAddRow}>Add Row</Button>
           </CardHeader>
           <Card.Body style={{ padding: "0" }}>
             <Form>
@@ -127,8 +134,8 @@ function AcademicPlanForm({ onAddPlan, student }) {
             </Form>
           </Card.Body>
           <Card.Footer>
-            <Button variant="primary" type="submit">
-              Submit
+            <Button variant="success" type="submit">
+              Save
             </Button>
           </Card.Footer>
         </Card>
