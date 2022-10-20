@@ -72,6 +72,10 @@ function AcademicPlanForm({ onAddPlan, student }) {
     setRowCount(rowCount + 1);
   }
 
+  function handleDeleteRow() {
+    setRowCount(rowCount - 1);
+  }
+
   const { requirement, course, altCourse } = plan.recommendations;
 
   return (
@@ -105,7 +109,7 @@ function AcademicPlanForm({ onAddPlan, student }) {
                       onChange={(e) => handleAddRecommendation(i, "course", e.target.value)}
                     />
                   </Col>
-                  <Col sm="4" style={{ paddingLeft: "0" }}>
+                  <Col sm="3" style={{ paddingLeft: "0" }}>
                     <Form.Control
                       type="text"
                       placeholder="alt course"
@@ -113,6 +117,9 @@ function AcademicPlanForm({ onAddPlan, student }) {
                       value={altCourse}
                       onChange={(e) => handleAddRecommendation(i, "altCourse", e.target.value)}
                     />
+                  </Col>
+                  <Col sm="1" style={{ paddingLeft: "0" }}>
+                    <Button variant="outline-danger" onClick={handleDeleteRow}>Delete Row</Button>
                   </Col>
                 </Row>
                 ))}
