@@ -5,15 +5,12 @@ import {
   Col,
   Card,
   Form,
-  FormGroup,
-  FormControl,
+  FormGroup
 } from "react-bootstrap";
 import CardHeader from "react-bootstrap/esm/CardHeader";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function AcademicPlanForm({ onAddPlan, student }) {
-  console.log(student);
   const [rowCount, setRowCount] = useState(4);
 
   const [plan, setPlan] = useState({
@@ -69,7 +66,6 @@ function AcademicPlanForm({ onAddPlan, student }) {
       });
     } 
   }
-
 
   function handleAddRow() {
     let newRow = { requirement: "", course: "", altCourse: "" };

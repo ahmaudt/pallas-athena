@@ -5,17 +5,22 @@ import {
   Col,
   Card,
   Form,
-  FormGroup,
-  FormControl,
+  FormGroup
 } from "react-bootstrap";
 import CardHeader from "react-bootstrap/esm/CardHeader";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function AcademicPlanForm({ workingPlan, onUpdatePlan }) {
+function AcademicPlanForm({ student, onUpdatePlan }) {
+  const [rowCount, setRowCount] = useState(1);
   const params = useParams();
 
-  const [plan, setPlan] = useState(null);
+  const [plan, setPlan] = useState({
+    studentId: student.id,
+    advisingTerm: " ",
+    currentTerm: " ",
+    recommendations: []
+  });
 
   useEffect(() => {
     fetch(`http://localhost:6001/plans/${params.id}`)
@@ -40,7 +45,6 @@ function AcademicPlanForm({ workingPlan, onUpdatePlan }) {
     }));
   }
 
-
   const handleAddRow = () => {
     let newRow = { requirement: "", course: "", altCourse: "" };
     newRow.id = plan.recommendations.index + 1;
@@ -48,7 +52,7 @@ function AcademicPlanForm({ workingPlan, onUpdatePlan }) {
   }
 
   const handleDeleteRow = (i) => {
-    plan.recommendations.filter((recommendation, i) => recommendation.id !== plan.recommendations.index);
+    setPlan(plan.recommendations.filter((recommendation, i) => recommendation.id !== plan.recommendations.index));
   }
 
   function handleSubmit(e) {
@@ -64,16 +68,19 @@ function AcademicPlanForm({ workingPlan, onUpdatePlan }) {
       .then((data) => onUpdatePlan(data));
   }
 
+  const { requirement, course, altCourse } = plan.recommendations;
 
-  const planRecommendations = plan?.recommendations.map((recommendation, index) => (
-      <Row key={index}>
+
+  const planRecommendations = [...Array(rowCount)].map((r, index) => (
+      plan.recommendations.map((recommendation, i) => (
+      <Row key={i}>
         <Col sm="3" style={{ paddingRight: "0" }}>
           <Form.Control
             type="text"
             placeholder="requirement"
             name="requirement"
             value={recommendation.requirement}
-            onChange={(e) => handleRecommendationChange(index, "requirement", e.target.value)}
+            onChange={(e) => handleRecommendationChange(i, "requirement", e.target.value)}
           />
         </Col>
         <Col sm="5" style={{ paddingRight: "0", paddingLeft: "0" }}>
@@ -82,7 +89,7 @@ function AcademicPlanForm({ workingPlan, onUpdatePlan }) {
             placeholder="course"
             name="name"
             value={recommendation.name}
-            onChange={(e) => handleRecommendationChange(index, "name", e.target.value)}
+            onChange={(e) => handleRecommendationChange(i, "name", e.target.value)}
           />
         </Col>
         <Col sm="3" style={{ paddingLeft: "0" }}>
@@ -91,13 +98,14 @@ function AcademicPlanForm({ workingPlan, onUpdatePlan }) {
             placeholder="alt course"
             name="altCourse"
             value={recommendation.altCourse}
-            onChange={(e) => handleRecommendationChange(index, "altCourse", e.target.value)}
+            onChange={(e) => handleRecommendationChange(i, "altCourse", e.target.value)}
           />
         </Col>
         <Col sm="1" style={{ paddingLeft: "0" }}>
           <Button variant="outline-danger" onClick={handleDeleteRow}>Delete Row</Button>
         </Col>
       </Row>
+      ))
   ));
 
   if (!plan) return <h2>Loading...</h2>;

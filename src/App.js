@@ -113,7 +113,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route exact path="/students" element={<StudentList students={students} onSelectStudent={handleSelectStudent} onSelectPlan={setWorkingPlan} />} />
               <Route exact path="/students/:id" element={<StudentDetail plans={plans} student={selectedStudent} onEditStudent={handleEditStudent} onSelectPlan={setWorkingPlan} />} />
-              <Route path="/plans/:id" element={<AcademicPlanForm onUpdatePlan={handleChangeForm} plan={workingPlan} />} />
+              <Route path="/plans/:id" element={<AcademicPlanForm onUpdatePlan={handleChangeForm} student={selectedStudent} />} />
               <Route path="/new-student" element={<NewStudentForm onAddStudent={handleAddStudent} />} />
               <Route path="/new-plan" element={<NewAcademicPlanForm onAddPlan={handleAddPlan} student={selectedStudent} />} />
             </Routes>

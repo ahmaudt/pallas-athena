@@ -74,9 +74,9 @@
       "recommendations": [
         {
           "id": 1,
-          "name": "SPAN 3030",
-          "altCourse": " ",
-          "requirement": "Minor"
+          "name": "HDFS 3701E",
+          "altCourse": "HDFS 3700E",
+          "requirement": "Major required: Adolescent Development"
         },
         {
           "id": 2,
