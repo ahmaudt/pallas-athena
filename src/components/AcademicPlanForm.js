@@ -23,6 +23,8 @@ function AcademicPlanForm({ workingPlan, onUpdatePlan }) {
       .then((data) => setPlan(data));
   }, [params.id]);
 
+  console.log(plan);
+
   function handleRecommendationChange(index, name, value) {
     const updatedRecommendations = plan.recommendations.map(
       (recommendation, i) => {
@@ -38,8 +40,33 @@ function AcademicPlanForm({ workingPlan, onUpdatePlan }) {
     }));
   }
 
+
+  const handleAddRow = () => {
+    let newRow = { requirement: "", course: "", altCourse: "" };
+    newRow.id = plan.recommendations.index + 1;
+    setPlan(plan.recommendations = [...plan.recommendations, newRow]);
+  }
+
+  const handleDeleteRow = (i) => {
+    plan.recommendations.filter((recommendation, i) => recommendation.id !== plan.recommendations.index);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch(`http://localhost:6001/plans/${plan.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(plan),
+    })
+      .then((r) => r.json())
+      .then((data) => onUpdatePlan(data));
+  }
+
+
   const planRecommendations = plan?.recommendations.map((recommendation, index) => (
-      <Row>
+      <Row key={index}>
         <Col sm="3" style={{ paddingRight: "0" }}>
           <Form.Control
             type="text"
@@ -58,7 +85,7 @@ function AcademicPlanForm({ workingPlan, onUpdatePlan }) {
             onChange={(e) => handleRecommendationChange(index, "name", e.target.value)}
           />
         </Col>
-        <Col sm="4" style={{ paddingLeft: "0" }}>
+        <Col sm="3" style={{ paddingLeft: "0" }}>
           <Form.Control
             type="text"
             placeholder="alt course"
@@ -66,6 +93,9 @@ function AcademicPlanForm({ workingPlan, onUpdatePlan }) {
             value={recommendation.altCourse}
             onChange={(e) => handleRecommendationChange(index, "altCourse", e.target.value)}
           />
+        </Col>
+        <Col sm="1" style={{ paddingLeft: "0" }}>
+          <Button variant="outline-danger" onClick={handleDeleteRow}>Delete Row</Button>
         </Col>
       </Row>
   ));
@@ -75,18 +105,18 @@ function AcademicPlanForm({ workingPlan, onUpdatePlan }) {
   const { studentId, adviseTerm, adviseYear, recommendations } = plan;
 
   return (
+    <Form onSubmit={handleSubmit}>
     <Row>
       <Col>
         <Card style={{ padding: "0" }}>
           <CardHeader>
-            <h2>Student Plan</h2>
+            <h2 className="float-start">Student Plan</h2>
+            <Button className="float-end" variant="primary" onClick={handleAddRow}>Add Row</Button>
           </CardHeader>
           <Card.Body style={{ padding: "0" }}>
-            <Form>
               <FormGroup>
                 {planRecommendations}
               </FormGroup>
-            </Form>
           </Card.Body>
           <Card.Footer>
             <Button variant="primary" type="submit">
@@ -96,6 +126,7 @@ function AcademicPlanForm({ workingPlan, onUpdatePlan }) {
         </Card>
       </Col>
     </Row>
+  </Form>
   );
 }
 

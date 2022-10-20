@@ -69,14 +69,14 @@
     {
       "id": 1,
       "studentId": 1,
-      "adviseTerm": "Spring",
-      "adviseYear": 2023,
+      "advisingTerm": "Spring 2023",
+      "currentTerm": "Fall 2022",
       "recommendations": [
         {
           "id": 1,
-          "name": "PHIL 1101",
+          "name": "SPAN 3030",
           "altCourse": " ",
-          "requirement": "major requirement"
+          "requirement": "Minor"
         },
         {
           "id": 2,
@@ -119,8 +119,8 @@
     {
       "id": 2,
       "studentId": 2,
-      "adviseTerm": "Spring",
-      "adviseYear": 2023,
+      "advisingTerm": "Spring 2023",
+      "currentTerm": "Fall 2022",
       "recommendations": [
         {
           "id": 1,
@@ -169,8 +169,8 @@
     {
       "id": 3,
       "studentId": 3,
-      "adviseTerm": "Spring",
-      "adviseYear": 2023,
+      "advisingTerm": "Spring 2023",
+      "currentTerm": "Fall 2022",
       "recommendations": [
         {
           "id": 1,
@@ -215,25 +215,6 @@
           "requirement": "major requirement"
         }
       ]
-    },
-    {
-      "studentId": 1,
-      "advisingTerm": "Summer 2023",
-      "currentTerm": "Fall 2022",
-      "recommendations": [
-        {
-          "requirement": "",
-          "course": "",
-          "altCourse": ""
-        },
-        {
-          "id": 1,
-          "requirement": "Major required: Adolescent Development",
-          "course": "HDFS 4330",
-          "altCourse": "HDFS 3920"
-        }
-      ],
-      "id": 4
     }
   ]
 }
