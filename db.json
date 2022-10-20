@@ -165,6 +165,56 @@
           "requirement": "major requirement"
         }
       ]
+    },
+    {
+      "id": 3,
+      "studentId": 3,
+      "adviseTerm": "Spring",
+      "adviseYear": 2023,
+      "recommendations": [
+        {
+          "id": 1,
+          "name": "PHIL 1101",
+          "altCourse": " ",
+          "requirement": "major requirement"
+        },
+        {
+          "id": 2,
+          "name": "PHIL 1102",
+          "altCourse": " ",
+          "requirement": "major requirement"
+        },
+        {
+          "id": 3,
+          "name": "PHIL 1103",
+          "altCourse": " ",
+          "requirement": "major requirement"
+        },
+        {
+          "id": 4,
+          "name": "PHIL 1104",
+          "altCourse": " ",
+          "requirement": "major requirement"
+        },
+        {
+          "id": 5,
+          "name": "PHIL 1105",
+          "altCourse": " ",
+          "requirement": "major requirement"
+        },
+        {
+          "id": 6,
+          "name": "PHIL 1106",
+          "altCourse": " ",
+          "requirement": "major requirement"
+        },
+        {
+          "id": 7,
+          "name": "PHIL 1107",
+          "altCourse": " ",
+          "requirement": "major requirement"
+        }
+      ]
     }
   ]
 }

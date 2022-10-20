@@ -18,7 +18,8 @@ function PlanList({ student, plans, onSelectPlan }) {
                 <Col>
                   <Card style={{ padding: "0" }}>
                     <CardHeader>
-                      <h2>Academic Plans</h2>
+                      <h2 className="float-start">Academic Plans</h2>
+                      <Button className="float-end" variant="success" href={`/new-plan`}>New Plan</Button>
                     </CardHeader>
                     <Card.Body>
                       <Table striped borderless size="sm">

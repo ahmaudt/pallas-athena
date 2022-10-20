@@ -108,12 +108,7 @@ function NewStudentForm({ onAddStudent }) {
               </Row>
             </Card.Body>
             <Card.Footer>
-              {/* <Link to={`/students/${params.id}/plans/${plan.id}`} style={{ marginRight: "5px" }}>
-                <button type="button" className="btn btn-primary">
-                  New Plan
-                </button>
-              </Link> */}
-              <Button type="submit" variant="primary" >Save</Button>
+              <Button type="submit" variant="primary">Save</Button>
             </Card.Footer>
           </Card>
         </Col>

@@ -11,7 +11,7 @@ function StudentList({ students, onSelectStudent }) {
         key={s.id}
         firstName={s.firstName}
         lastName={s.lastName}
-        majorOne={s.majorOne}
+        major={s.major}
         id={s.id}
         student={s}
         onSelectStudent={onSelectStudent}

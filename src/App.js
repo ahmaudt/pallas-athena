@@ -11,6 +11,7 @@ import StudentList from "./components/StudentList";
 import Home from "./components/Home";
 import AcademicPlanForm from "./components/AcademicPlanForm";
 import NewStudentForm from "./components/NewStudentForm";
+import NewAcademicPlanForm from "./components/NewAcademicPlanForm";
 
 function App() {
   // students is the state variable for the student list
@@ -28,20 +29,19 @@ function App() {
     }
   
   const [selectedStudent, setSelectedStudent] = useState({
+    id: "",
+    ugaMyId: "",
     firstName: "",
     lastName: "",
-    majorOne: "",
-    majorTwo: "",
-    minorOne: "",
-    minorTwo: "",
-    id: "",
     matricTerm: "",
     gradTerm: "",
-    ugaMyId: "",
+    currentTerm: "",
+    advisingTerm: "",
+    major: "",
     preProfessional: "",
-    earnedHrs: "",
-    remainingHrs: "",
-    requiredHrs: "",
+    earnedHrs: 0,
+    requiredHrs: 0,
+    remainingHrs: 0,
   });
   
   // selectedStudent is the student that is currently selected from the list
@@ -51,9 +51,6 @@ function App() {
       .then((r) => r.json())
       .then((data) => setStudents(data));
   }, []);
-
-  console.log(students);
-
 
   useEffect(() => {
     fetch("http://localhost:6001/plans")
@@ -121,6 +118,7 @@ function App() {
               <Route exact path="/students/:id" element={<StudentDetail plans={plans} student={selectedStudent} onEditStudent={handleEditStudent} onSelectPlan={setplan} />} />
               <Route path="/plans/:id" element={<AcademicPlanForm onUpdatePlan={handleChangeForm} plan={plan} />} />
               <Route path="/new-student" element={<NewStudentForm onAddStudent={handleAddStudent} />} />
+              <Route path="/new-plan" element={<NewAcademicPlanForm onAddPlan={handleAddPlan} student={selectedStudent} />} />
             </Routes>
           </Col>
           <Col sm="auto"></Col>

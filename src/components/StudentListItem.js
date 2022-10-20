@@ -11,7 +11,7 @@ function StudentListItem({ student, onSelectStudent }) {
             <tr>
                 <td>{student.lastName}</td>
                 <td>{student.firstName}</td>
-                <td>{student.majorOne}</td>
+                <td>{student.major}</td>
                 <td>{student.id}</td>
                 <td>
                     <Link to={`/students/${student.id}`}>
