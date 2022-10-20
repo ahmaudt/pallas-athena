@@ -12,12 +12,13 @@ function StudentInfoForm({ onEditStudent }) {
     major: "",
     matricTerm: "",
     gradTerm: "",
+    currentTerm: "",
+    advisingTerm: "",
     ugaMyId: "",
     preProfessional: "",
     earnedHrs: "",
     remainingHrs: "",
     requiredHrs: "",
-    academicPlans: []
   });
   const params = useParams();
 
@@ -47,7 +48,7 @@ function StudentInfoForm({ onEditStudent }) {
       .then((data) => onEditStudent(data));
   }
 
-  const { firstName, lastName, major, matricTerm, gradTerm, ugaMyId, preProfessional, earnedHrs, remainingHrs, requiredHrs } = student;
+  const { firstName, lastName, major, matricTerm, gradTerm, currentTerm, advisingTerm, ugaMyId, preProfessional, earnedHrs, remainingHrs, requiredHrs } = student;
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -74,10 +75,10 @@ function StudentInfoForm({ onEditStudent }) {
               </Row>
               <Row>
                 <Col sm="3" style={{ paddingRight: "0" }}>
-                  <FormControl type="text" placeholder="current term" />
+                  <FormControl type="text" placeholder="current term" name="currentTerm" value={currentTerm} onChange={handleEditInfo} />
                 </Col>
                 <Col sm="3" style={{ paddingRight: "0", paddingLeft: "0" }}>
-                  <FormControl type="text" placeholder="advising term" />
+                  <FormControl type="text" placeholder="advising term" name="advisingTerm" value={advisingTerm} onChange={handleEditInfo} />
                 </Col>
                 <Col sm="3" style={{ paddingRight: "0", paddingLeft: "0" }}>
                   <FormControl type="text" placeholder="matriculation term" name="matricTerm" value={matricTerm} onChange={handleEditInfo} />
