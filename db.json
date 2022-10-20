@@ -27,6 +27,21 @@
       "earnedHrs": 0,
       "requiredHrs": 121,
       "remainingHrs": 0
+    },
+    {
+      "firstName": "Binky",
+      "lastName": "Templeton",
+      "major": "HDFS",
+      "matricTerm": "Fall 2021",
+      "gradTerm": "Spring 2025",
+      "currentTerm": "Fall 2022",
+      "advisingTerm": "Spring 2023",
+      "ugaMyId": "binkyt",
+      "preProfessional": "Pre-RN",
+      "earnedHrs": "12",
+      "remainingHrs": "109",
+      "requiredHrs": "121",
+      "id": 3
     }
   ],
   "programs": [

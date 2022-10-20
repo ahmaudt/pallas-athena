@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Button, Card, Col, Container, Form, Row, Table } from "react-bootstrap";
+import { Button, Card, Col, Container, Form, NavDropdown, Row, Table } from "react-bootstrap";
 import { NavLink, Link, Switch, Routes, Route } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import CardHeader from "react-bootstrap/esm/CardHeader";
@@ -10,7 +10,7 @@ import StudentDetail from "./components/StudentDetail";
 import StudentList from "./components/StudentList";
 import Home from "./components/Home";
 import AcademicPlanForm from "./components/AcademicPlanForm";
-import AcademicPlan from "./components/AcademicPlan";
+import NewStudentForm from "./components/NewStudentForm";
 
 function App() {
   // students is the state variable for the student list
@@ -78,6 +78,11 @@ function App() {
     setStudents(updatedStudents);
   }
 
+  function handleAddStudent(student) {
+    const updatedStudents = [...students, student];
+    setStudents(updatedStudents);
+  }
+
   function handleAddPlan(plan) {
     const updatedPlans = [...plans, plan];
     setPlans(updatedPlans);
@@ -105,17 +110,17 @@ function App() {
                   Home
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Item>
-                <Nav.Link as={NavLink} to="/students">
-                  Students
-                </Nav.Link>
-              </Nav.Item>
+              <NavDropdown title="Advising">
+                <NavDropdown.Item as={NavLink} to="/students">Students</NavDropdown.Item>
+                <NavDropdown.Item as={NavLink} to="/new-student">New Student</NavDropdown.Item>
+              </NavDropdown>
             </Nav>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route exact path="/students" element={<StudentList students={students} onSelectStudent={handleSelectStudent} onSelectPlan={setplan} />} />
               <Route exact path="/students/:id" element={<StudentDetail plans={plans} student={selectedStudent} onEditStudent={handleEditStudent} onSelectPlan={setplan} />} />
               <Route path="/plans/:id" element={<AcademicPlanForm onUpdatePlan={handleChangeForm} plan={plan} />} />
+              <Route path="/new-student" element={<NewStudentForm onAddStudent={handleAddStudent} />} />
             </Routes>
           </Col>
           <Col sm="auto"></Col>
