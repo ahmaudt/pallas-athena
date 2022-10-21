@@ -9,6 +9,7 @@ import {
 } from "react-bootstrap";
 import CardHeader from "react-bootstrap/esm/CardHeader";
 import { useState } from "react";
+import StudentInfoForm from "./StudentInfoForm";
 
 function NewAcademicPlanForm({ onAddPlan, student }) {
   const [rowCount, setRowCount] = useState(4);
@@ -76,6 +77,11 @@ function NewAcademicPlanForm({ onAddPlan, student }) {
 
   return (
     <Form onSubmit={handleSubmit}>
+      <Row>
+      <Col>
+        <StudentInfoForm currentStudent={student} />
+      </Col>
+      </Row>
     <Row>
       <Col>
         <Card style={{ padding: "0" }}>

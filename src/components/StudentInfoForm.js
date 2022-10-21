@@ -5,7 +5,7 @@ import CardHeader from "react-bootstrap/esm/CardHeader";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-function StudentInfoForm({ onEditStudent }) {
+function StudentInfoForm({ onEditStudent, currentStudent }) {
   const [student, setStudent] = useState({
     firstName: "",
     lastName: "",
@@ -23,7 +23,7 @@ function StudentInfoForm({ onEditStudent }) {
   const params = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:6001/students/${params.id}`)
+    fetch(`http://localhost:6001/students/${params.id || currentStudent.id}`)
       .then((r) => r.json())
       .then((data) => setStudent(data));
   }, [params.id]);
