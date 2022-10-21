@@ -173,6 +173,17 @@ function AcademicPlanForm({ student, onUpdatePlan }) {
                   ))
                 ))} 
               </FormGroup>
+              <FormGroup style={{ padding: "10px" }}>
+                <Form.Label>Notes</Form.Label>
+                <Form.Control 
+                  as="textarea" 
+                  placeholder="plan notes"
+                  name="notes"
+                  defaultValue={plan.notes}
+                  onChange={(e) => plan.notes = e.target.value}
+                  rows={5}>
+                </Form.Control>
+              </FormGroup>
           </Card.Body>
           <Card.Footer>
             <Button variant="primary" type="submit">

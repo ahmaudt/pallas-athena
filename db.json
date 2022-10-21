@@ -215,7 +215,7 @@
           "altCourse": "HDFS 2200"
         }
       ],
-      "notes": "# This is a header 1\n\n### This is a header 3",
+      "notes": "# This is a header 1\n\n### This is a header 3\n\n| this is a table column | and a second table column |\n| :-------------------- | --------------------------: |\n| some stuff | and some other stuff |",
       "id": 5
     }
   ]
