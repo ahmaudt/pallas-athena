@@ -40,7 +40,11 @@ function App() {
     });
 
     function handleChangeForm(recommendations) {
-      setWorkingPlan(...workingPlan.recommendations, recommendations);
+      // setWorkingPlan(...workingPlan.recommendations, recommendations);
+      setWorkingPlan((workingPlan) => ({
+        ...workingPlan,
+        recommendations: recommendations,
+      }));
     }
   
   // selectedStudent is the student that is currently selected from the list
@@ -79,16 +83,6 @@ function App() {
 
   function handleAddPlan(plan) {
     const updatedPlans = [...plans, plan];
-    setPlans(updatedPlans);
-  }
-
-
-  function handleEditPlan(plan) {
-    const updatedPlans = plans.map((p) => {
-      if (p.id === plan.id) return plan;
-      return p;
-    });
-    setWorkingPlan(plan);
     setPlans(updatedPlans);
   }
 

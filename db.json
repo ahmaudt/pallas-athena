@@ -73,46 +73,30 @@
       "currentTerm": "Fall 2022",
       "recommendations": [
         {
-          "id": 1,
-          "name": "HDFS 3701E",
-          "altCourse": "HDFS 3700E",
-          "requirement": "Major required: Adolescent Development"
-        },
-        {
-          "id": 2,
-          "name": "PHIL 1102",
-          "altCourse": " ",
-          "requirement": "major requirement"
-        },
-        {
-          "id": 3,
-          "name": "PHIL 1103",
-          "altCourse": " ",
-          "requirement": "major requirement"
-        },
-        {
+          "requirement": "HDFS Minor",
+          "course": "SPAN 3030",
+          "altCourse": "HDFS 2200",
           "id": 4,
-          "name": "PHIL 1104",
-          "altCourse": " ",
-          "requirement": "major requirement"
+          "name": "HDFS 2100"
         },
         {
-          "id": 5,
-          "name": "PHIL 1105",
-          "altCourse": " ",
-          "requirement": "major requirement"
+          "requirement": "Major",
+          "course": "PHIL 3010",
+          "altCourse": "PHIL 3020",
+          "id": 2,
+          "name": "PHIL 3010"
         },
         {
-          "id": 6,
-          "name": "PHIL 1106",
-          "altCourse": " ",
-          "requirement": "major requirement"
+          "requirement": "History requirement",
+          "course": "HIST 2111",
+          "altCourse": "HIST 2112",
+          "id": 3
         },
         {
-          "id": 7,
-          "name": "PHIL 1107",
-          "altCourse": " ",
-          "requirement": "major requirement"
+          "requirement": "Physical Science",
+          "course": "PHYS 1111-1111L",
+          "altCourse": "",
+          "id": 4
         }
       ]
     },
@@ -124,43 +108,31 @@
       "recommendations": [
         {
           "id": 1,
-          "name": "PHIL 1101",
+          "course": "PHIL 1101",
           "altCourse": " ",
           "requirement": "major requirement"
         },
         {
           "id": 2,
-          "name": "PHIL 1102",
+          "course": "PHIL 1102",
           "altCourse": " ",
           "requirement": "major requirement"
         },
         {
           "id": 3,
-          "name": "PHIL 1103",
+          "course": "PHIL 1103",
           "altCourse": " ",
           "requirement": "major requirement"
         },
         {
           "id": 4,
-          "name": "PHIL 1104",
-          "altCourse": " ",
-          "requirement": "major requirement"
-        },
-        {
-          "id": 5,
-          "name": "PHIL 1105",
-          "altCourse": " ",
-          "requirement": "major requirement"
-        },
-        {
-          "id": 6,
-          "name": "PHIL 1106",
+          "course": "PHIL 1104",
           "altCourse": " ",
           "requirement": "major requirement"
         },
         {
           "id": 7,
-          "name": "PHIL 1107",
+          "course": "PHIL 1107",
           "altCourse": " ",
           "requirement": "major requirement"
         }
@@ -174,43 +146,37 @@
       "recommendations": [
         {
           "id": 1,
-          "name": "PHIL 1101",
+          "course": "HDFS 2100",
           "altCourse": " ",
           "requirement": "major requirement"
         },
         {
           "id": 2,
-          "name": "PHIL 1102",
+          "course": "PHIL 1102",
           "altCourse": " ",
           "requirement": "major requirement"
         },
         {
           "id": 3,
-          "name": "PHIL 1103",
+          "course": "PHIL 1103",
           "altCourse": " ",
           "requirement": "major requirement"
         },
         {
           "id": 4,
-          "name": "PHIL 1104",
+          "course": "PHIL 1104",
           "altCourse": " ",
           "requirement": "major requirement"
         },
         {
           "id": 5,
-          "name": "PHIL 1105",
-          "altCourse": " ",
-          "requirement": "major requirement"
-        },
-        {
-          "id": 6,
-          "name": "PHIL 1106",
+          "course": "PHIL 1105",
           "altCourse": " ",
           "requirement": "major requirement"
         },
         {
           "id": 7,
-          "name": "PHIL 1107",
+          "course": "PHIL 1107",
           "altCourse": " ",
           "requirement": "major requirement"
         }

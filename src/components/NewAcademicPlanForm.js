@@ -10,20 +10,14 @@ import {
 import CardHeader from "react-bootstrap/esm/CardHeader";
 import { useState } from "react";
 
-function AcademicPlanForm({ onAddPlan, student }) {
+function NewAcademicPlanForm({ onAddPlan, student }) {
   const [rowCount, setRowCount] = useState(4);
 
   const [plan, setPlan] = useState({
     studentId: student.id,
     advisingTerm: student.advisingTerm,
     currentTerm: student.currentTerm,
-    recommendations: [
-      {
-        requirement: "",
-        course: "",
-        altCourse: ""
-      }
-    ]
+    recommendations: []
   });
 
   function handleSubmit(e) {
@@ -140,4 +134,4 @@ function AcademicPlanForm({ onAddPlan, student }) {
   );
 }
 
-export default AcademicPlanForm;
+export default NewAcademicPlanForm;

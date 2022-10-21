@@ -4,12 +4,14 @@ import {
   Row,
   Col,
   Card,
+  CardGroup,
   Form,
   FormGroup
 } from "react-bootstrap";
 import CardHeader from "react-bootstrap/esm/CardHeader";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import StudentInfoForm from "./StudentInfoForm";
 
 function AcademicPlanForm({ student, onUpdatePlan }) {
   const params = useParams();
@@ -27,7 +29,7 @@ function AcademicPlanForm({ student, onUpdatePlan }) {
       .then((data) => setPlan(data));
   }, [params.id]);
 
-  const [rowCount, setRowCount] = useState(plan.recommendations.length);
+  const [rowCount, setRowCount] = useState(`${plan.recommendations.length}`);
 
   function handleRecommendationChange(index, name, value) {
     const updatedRecommendations = plan.recommendations.map(
@@ -46,12 +48,11 @@ function AcademicPlanForm({ student, onUpdatePlan }) {
 
   const handleAddRow = () => {
     let newRow = { requirement: "", course: "", altCourse: "" };
-    newRow.id = rowCount + 1;
+    newRow.id = plan.recommendations.length + 1;
     setPlan((plan) => ({
       ...plan,
       recommendations: [...plan.recommendations, newRow],
     }));
-    setRowCount(rowCount + 1);  
   }
 
   const handleDeleteRow = (i) => {
@@ -61,7 +62,6 @@ function AcademicPlanForm({ student, onUpdatePlan }) {
         (recommendation) => recommendation.id !== i
       ),
     }));
-    setRowCount(rowCount - 1);
   }
 
 
@@ -78,9 +78,6 @@ function AcademicPlanForm({ student, onUpdatePlan }) {
       .then((data) => onUpdatePlan(data));
   }
 
-  const { requirement, course, altCourse } = plan.recommendations;
-
-
   const planRecommendations = [...Array(plan.recommendations)].map((r, index) => (
       plan.recommendations.map((recommendation, i) => (
       <Row key={i}>
@@ -90,16 +87,16 @@ function AcademicPlanForm({ student, onUpdatePlan }) {
             placeholder="requirement"
             name="requirement"
             value={recommendation.requirement}
-            onChange={(e) => handleRecommendationChange(index, "requirement", e.target.value)}
+            onChange={(e) => handleRecommendationChange(i, "requirement", e.target.value)}
           />
         </Col>
         <Col sm="5" style={{ paddingRight: "0", paddingLeft: "0" }}>
           <Form.Control
             type="text"
             placeholder="course"
-            name="name"
-            value={recommendation.name}
-            onChange={(e) => handleRecommendationChange(index, "name", e.target.value)}
+            name="course"
+            value={recommendation.course}
+            onChange={(e) => handleRecommendationChange(i, "course", e.target.value)}
           />
         </Col>
         <Col sm="3" style={{ paddingLeft: "0" }}>
@@ -108,7 +105,7 @@ function AcademicPlanForm({ student, onUpdatePlan }) {
             placeholder="alt course"
             name="altCourse"
             value={recommendation.altCourse}
-            onChange={(e) => handleRecommendationChange(index, "altCourse", e.target.value)}
+            onChange={(e) => handleRecommendationChange(i, "altCourse", e.target.value)}
           />
         </Col>
         <Col sm="1" style={{ paddingLeft: "0" }}>
@@ -124,6 +121,11 @@ function AcademicPlanForm({ student, onUpdatePlan }) {
 
   return (
     <Form onSubmit={handleSubmit}>
+      <Row>
+        <Col>
+          <StudentInfoForm />
+        </Col>
+      </Row>
     <Row>
       <Col>
         <Card style={{ padding: "0" }}>
@@ -133,7 +135,42 @@ function AcademicPlanForm({ student, onUpdatePlan }) {
           </CardHeader>
           <Card.Body style={{ padding: "0" }}>
               <FormGroup>
-                {planRecommendations}
+                {[...Array(plan.recommendations)].map((r, index) => (
+                  plan.recommendations.map((recommendation, i) => (
+                  <Row key={i}>
+                    <Col sm="3" style={{ paddingRight: "0" }}>
+                      <Form.Control
+                        type="text"
+                        placeholder="requirement"
+                        name="requirement"
+                        value={recommendation.requirement}
+                        onChange={(e) => handleRecommendationChange(i, "requirement", e.target.value)}
+                      />
+                    </Col>
+                    <Col sm="5" style={{ paddingRight: "0", paddingLeft: "0" }}>
+                      <Form.Control
+                        type="text"
+                        placeholder="course"
+                        name="course"
+                        value={recommendation.course}
+                        onChange={(e) => handleRecommendationChange(i, "course", e.target.value)}
+                      />
+                    </Col>
+                    <Col sm="3" style={{ paddingLeft: "0" }}>
+                      <Form.Control
+                        type="text"
+                        placeholder="alt course"
+                        name="altCourse"
+                        value={recommendation.altCourse}
+                        onChange={(e) => handleRecommendationChange(i, "altCourse", e.target.value)}
+                      />
+                    </Col>
+                    <Col sm="1" style={{ paddingLeft: "0" }}>
+                      <Button variant="outline-danger" onClick={(e) => handleDeleteRow(i)}>Delete Row</Button>
+                    </Col>
+                  </Row>
+                  ))
+                ))} 
               </FormGroup>
           </Card.Body>
           <Card.Footer>

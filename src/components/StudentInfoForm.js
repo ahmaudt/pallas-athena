@@ -33,8 +33,6 @@ function StudentInfoForm({ onEditStudent }) {
     setStudent(updatedStudent);
   }
 
-  console.log(student);
-
   function handleSubmit(e) {
     e.preventDefault();
     fetch(`http://localhost:6001/students/${params.id}`, {
@@ -115,11 +113,6 @@ function StudentInfoForm({ onEditStudent }) {
               </Row>
             </Card.Body>
             <Card.Footer>
-              {/* <Link to={`/students/${params.id}/plans/${plan.id}`} style={{ marginRight: "5px" }}>
-                <button type="button" className="btn btn-primary">
-                  New Plan
-                </button>
-              </Link> */}
               <Button type="submit" variant="primary" >Save</Button>
             </Card.Footer>
           </Card>
