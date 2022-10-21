@@ -9,8 +9,8 @@ function AcademicPlan({ plan, onSelectPlan }) {
             <td>{plan.currentTerm}</td>
             <td>{plan.advisingTerm}</td>
             <td>
-                <Link to={`/plans/${plan.id}`}>
-                    <Button variant="outline-danger" onClick={() => onSelectPlan(plan)}>Edit</Button>
+                <Link to={`/plans/${plan.id}/view`}>
+                    <Button variant="outline-danger" onClick={() => onSelectPlan(plan)}>View</Button>
                 </Link>
                 
             </td>

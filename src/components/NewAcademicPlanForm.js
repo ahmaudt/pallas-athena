@@ -10,6 +10,8 @@ import {
 import CardHeader from "react-bootstrap/esm/CardHeader";
 import { useState } from "react";
 import StudentInfoForm from "./StudentInfoForm";
+import { FcDeleteRow, VscOutput } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
 function NewAcademicPlanForm({ onAddPlan, student }) {
   const [rowCount, setRowCount] = useState(4);
@@ -18,7 +20,8 @@ function NewAcademicPlanForm({ onAddPlan, student }) {
     studentId: student.id,
     advisingTerm: student.advisingTerm,
     currentTerm: student.currentTerm,
-    recommendations: []
+    recommendations: [],
+    notes: "write notes here",
   });
 
   function handleSubmit(e) {
@@ -62,6 +65,10 @@ function NewAcademicPlanForm({ onAddPlan, student }) {
     } 
   }
 
+  function handleAddNote(notes) {
+    setPlan(...plan.notes, notes)
+  }
+
 
   function handleAddRow() {
     let newRow = { requirement: "", course: "", altCourse: "" };
@@ -93,7 +100,7 @@ function NewAcademicPlanForm({ onAddPlan, student }) {
               <FormGroup>
                 {[...Array(rowCount)].map((r, i) => (
                   <Row key={i}>
-                  <Col sm="3" style={{ paddingRight: "0" }}>
+                  <Col lg="3" style={{ paddingRight: "0" }}>
                     <Form.Control
                       type="text"
                       placeholder="requirement"
@@ -102,7 +109,7 @@ function NewAcademicPlanForm({ onAddPlan, student }) {
                       onChange={(e) => handleAddRecommendation(i, "requirement", e.target.value)}
                     />
                   </Col>
-                  <Col sm="5" style={{ paddingRight: "0", paddingLeft: "0" }}>
+                  <Col md="4" style={{ paddingRight: "0", paddingLeft: "0"  }}>
                     <Form.Control
                       type="text"
                       placeholder="course"
@@ -111,7 +118,7 @@ function NewAcademicPlanForm({ onAddPlan, student }) {
                       onChange={(e) => handleAddRecommendation(i, "course", e.target.value)}
                     />
                   </Col>
-                  <Col sm="3" style={{ paddingLeft: "0" }}>
+                  <Col md="4" style={{ paddingLeft: "0", marginRight: "0" }}>
                     <Form.Control
                       type="text"
                       placeholder="alt course"
@@ -120,17 +127,35 @@ function NewAcademicPlanForm({ onAddPlan, student }) {
                       onChange={(e) => handleAddRecommendation(i, "altCourse", e.target.value)}
                     />
                   </Col>
-                  <Col sm="1" style={{ paddingLeft: "0" }}>
-                    <Button variant="outline-danger" onClick={handleDeleteRow}>Delete Row</Button>
+                  <Col md="auto" style={{ padding: "0", margin: "0", width: "10px" }}>
+                    {/* <Button variant="outline-danger" onClick={handleDeleteRow}>Delete Row</Button> */}
+                    <FcDeleteRow size="2em" onClick={handleDeleteRow} />
                   </Col>
                 </Row>
                 ))}
+              </FormGroup>
+              <FormGroup style={{ padding: "10px" }}>
+                <Form.Label>Notes</Form.Label>
+                <Form.Control 
+                  as="textarea" 
+                  placeholder="plan notes"
+                  name="notes"
+                  defaultValue={plan.notes}
+                  onChange={(e) => plan.notes = e.target.value}
+                  rows={5}>
+
+                  </Form.Control>
               </FormGroup>
           </Card.Body>
           <Card.Footer>
             <Button variant="success" type="submit">
               Save
             </Button>
+            <Link to={`/generated-plan`}>
+              <Button style={{ marginLeft: "5px" }} variant="secondary" type="button">
+                Create Plan
+              </Button>
+            </Link>
           </Card.Footer>
         </Card>
       </Col>

@@ -49,7 +49,6 @@ function StudentInfoForm({ onEditStudent, currentStudent }) {
   const { firstName, lastName, major, matricTerm, gradTerm, currentTerm, advisingTerm, ugaMyId, preProfessional, earnedHrs, remainingHrs, requiredHrs } = student;
 
   return (
-    <Form onSubmit={handleSubmit}>
       <Row>
         <Col>
           <Card style={{ padding: "0" }}>
@@ -118,7 +117,6 @@ function StudentInfoForm({ onEditStudent, currentStudent }) {
           </Card>
         </Col>
       </Row>
-    </Form>
   );
 }
 

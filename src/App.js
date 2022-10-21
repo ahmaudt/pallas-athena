@@ -12,6 +12,7 @@ import Home from "./components/Home";
 import AcademicPlanForm from "./components/AcademicPlanForm";
 import NewStudentForm from "./components/NewStudentForm";
 import NewAcademicPlanForm from "./components/NewAcademicPlanForm";
+import ViewPlan from "./components/ViewPlan";
 
 function App() {
   // students is the state variable for the student list
@@ -108,8 +109,10 @@ function App() {
               <Route exact path="/students" element={<StudentList students={students} onSelectStudent={handleSelectStudent} onSelectPlan={setWorkingPlan} />} />
               <Route exact path="/students/:id" element={<StudentDetail plans={plans} student={selectedStudent} onEditStudent={handleEditStudent} onSelectPlan={setWorkingPlan} />} />
               <Route path="/plans/:id" element={<AcademicPlanForm onUpdatePlan={handleChangeForm} student={selectedStudent} />} />
+              <Route path="/plans/:id/view" element={<ViewPlan />} />
               <Route path="/new-student" element={<NewStudentForm onAddStudent={handleAddStudent} />} />
               <Route path="/new-plan" element={<NewAcademicPlanForm onAddPlan={handleAddPlan} student={selectedStudent} />} />
+              <Route path="/generated-plan" element={<ViewPlan />} />
             </Routes>
           </Col>
           <Col sm="auto"></Col>
