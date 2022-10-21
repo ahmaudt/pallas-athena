@@ -12,13 +12,12 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function AcademicPlanForm({ student, onUpdatePlan }) {
-  const [rowCount, setRowCount] = useState(1);
   const params = useParams();
 
   const [plan, setPlan] = useState({
     studentId: student.id,
-    advisingTerm: " ",
-    currentTerm: " ",
+    advisingTerm: student.advisingTerm,
+    currentTerm: student.currentTerm,
     recommendations: []
   });
 
@@ -28,7 +27,7 @@ function AcademicPlanForm({ student, onUpdatePlan }) {
       .then((data) => setPlan(data));
   }, [params.id]);
 
-  console.log(plan);
+  const [rowCount, setRowCount] = useState(plan.recommendations.length);
 
   function handleRecommendationChange(index, name, value) {
     const updatedRecommendations = plan.recommendations.map(
@@ -47,13 +46,24 @@ function AcademicPlanForm({ student, onUpdatePlan }) {
 
   const handleAddRow = () => {
     let newRow = { requirement: "", course: "", altCourse: "" };
-    newRow.id = plan.recommendations.index + 1;
-    setPlan(plan.recommendations = [...plan.recommendations, newRow]);
+    newRow.id = rowCount + 1;
+    setPlan((plan) => ({
+      ...plan,
+      recommendations: [...plan.recommendations, newRow],
+    }));
+    setRowCount(rowCount + 1);  
   }
 
   const handleDeleteRow = (i) => {
-    setPlan(plan.recommendations.filter((recommendation, i) => recommendation.id !== plan.recommendations.index));
+    setPlan((plan) => ({
+      ...plan,
+      recommendations: plan.recommendations.filter(
+        (recommendation) => recommendation.id !== i
+      ),
+    }));
+    setRowCount(rowCount - 1);
   }
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -71,7 +81,7 @@ function AcademicPlanForm({ student, onUpdatePlan }) {
   const { requirement, course, altCourse } = plan.recommendations;
 
 
-  const planRecommendations = [...Array(rowCount)].map((r, index) => (
+  const planRecommendations = [...Array(plan.recommendations)].map((r, index) => (
       plan.recommendations.map((recommendation, i) => (
       <Row key={i}>
         <Col sm="3" style={{ paddingRight: "0" }}>
@@ -80,7 +90,7 @@ function AcademicPlanForm({ student, onUpdatePlan }) {
             placeholder="requirement"
             name="requirement"
             value={recommendation.requirement}
-            onChange={(e) => handleRecommendationChange(i, "requirement", e.target.value)}
+            onChange={(e) => handleRecommendationChange(index, "requirement", e.target.value)}
           />
         </Col>
         <Col sm="5" style={{ paddingRight: "0", paddingLeft: "0" }}>
@@ -89,7 +99,7 @@ function AcademicPlanForm({ student, onUpdatePlan }) {
             placeholder="course"
             name="name"
             value={recommendation.name}
-            onChange={(e) => handleRecommendationChange(i, "name", e.target.value)}
+            onChange={(e) => handleRecommendationChange(index, "name", e.target.value)}
           />
         </Col>
         <Col sm="3" style={{ paddingLeft: "0" }}>
@@ -98,11 +108,11 @@ function AcademicPlanForm({ student, onUpdatePlan }) {
             placeholder="alt course"
             name="altCourse"
             value={recommendation.altCourse}
-            onChange={(e) => handleRecommendationChange(i, "altCourse", e.target.value)}
+            onChange={(e) => handleRecommendationChange(index, "altCourse", e.target.value)}
           />
         </Col>
         <Col sm="1" style={{ paddingLeft: "0" }}>
-          <Button variant="outline-danger" onClick={handleDeleteRow}>Delete Row</Button>
+          <Button variant="outline-danger" onClick={(e) => handleDeleteRow(i)}>Delete Row</Button>
         </Col>
       </Row>
       ))

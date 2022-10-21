@@ -67,6 +67,7 @@ function AcademicPlanForm({ onAddPlan, student }) {
     } 
   }
 
+
   function handleAddRow() {
     let newRow = { requirement: "", course: "", altCourse: "" };
     newRow.id = rowCount.index + 1;
