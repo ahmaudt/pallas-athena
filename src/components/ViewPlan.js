@@ -1,81 +1,118 @@
 import React from "react";
-import { Button, Card, Table } from "react-bootstrap";
+import { Button, Card, Tab, Table } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import MarkdownPreview from '@uiw/react-markdown-preview';
+import MarkdownPreview from "@uiw/react-markdown-preview";
 
 function ViewPlan() {
-    const params = useParams();
-    console.log(params);
+  const params = useParams();
+  console.log(params);
 
-    const [plan, setPlan] = useState({
-        studentId: "",
-        advisingTerm: "",
-        currentTerm: "",
-        recommendations: []
-    });
+  const [plan, setPlan] = useState({
+    studentId: "",
+    advisingTerm: "",
+    currentTerm: "",
+    recommendations: [],
+  });
 
-    const [student, setStudent] = useState('');
+  const [student, setStudent] = useState("");
 
-    useEffect(() => {
-        fetch(`http://localhost:6001/plans/${params.id}`)
-            .then((r) => r.json())
-            .then((data) => setPlan(data));
-    }, [params.id]);
+  useEffect(() => {
+    fetch(`http://localhost:6001/plans/${params.id}`)
+      .then((r) => r.json())
+      .then((data) => setPlan(data));
+  }, [params.id]);
 
-    useEffect(() => {
-        fetch(`http://localhost:6001/students/${plan.studentId}`)
-            .then((r) => r.json())
-            .then((data) => setStudent(data));
-    }, [plan.studentId]);
+  useEffect(() => {
+    fetch(`http://localhost:6001/students/${plan.studentId}`)
+      .then((r) => r.json())
+      .then((data) => setStudent(data));
+  }, [plan.studentId]);
 
-    if (!plan || !student) {<h1>Loading...</h1>}
+  if (!plan || !student) {
+    <h1>Loading...</h1>;
+  }
 
-    return (
-        <Card>
-            <Card.Header>
-                <Card.Title>{student.firstName} {student.lastName}'s {plan.advisingTerm} Academic Plan</Card.Title>
-            </Card.Header>
-            <Card.Body>
-                <Table striped bordered hover>
-                    <thead>
+  return (
+    <Table borderless>
+      <tbody>
+        <tr>
+          <td>
+            <Card bg="danger" text="light">
+              <Card.Header>
+                <Card.Title>Header</Card.Title>
+                <Card.Text>
+                  <a href="http://bulletin.uga.edu/Bulletin_Files/acad/Advising.html">
+                    <strong>
+                      From the UGA Bulletin:
+                      <i class="fa fa-external-link-alt" aria-hidden="true"></i>
+                    </strong>
+                  </a>{" "}
+                  <em>
+                    Students are expected to be full participants in academic
+                    advising and thus to be both prepared for and engaged in the
+                    advising experience. The academic landscape is always
+                    subject to change, and although advisors can provide advice,
+                  </em>{" "}
+                  <strong>
+                    each student is ultimately responsible for knowing and
+                    understanding the degree requirements and policies related
+                    to his/her own academic progress.
+                  </strong>
+                </Card.Text>
+              </Card.Header>
+            </Card>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Card style={{ marginTop: "0" }}>
+              <Card.Header style={{ marginTop: "0" }}>
+                <Card.Title>Recommendations</Card.Title>
+              </Card.Header>
+              <Card.Body style={{ marginTop: "0" }}>
+                <Table bordered striped hover style={{ marginTop: "0" }}>
+                  <thead style={{ marginTop: "0" }}>
                     <tr>
-                        <th>Requirement</th>
-                        <th>Course</th>
-                        <th>Alt Course</th>
+                      <th>Requirement</th>
+                      <th>Course</th>
+                      <th>Alt Course</th>
                     </tr>
-                    </thead>
-                    <tbody>
+                  </thead>
+                  <tbody style={{ marginTop: "0" }}>
                     {plan?.recommendations.map((r) => (
-                        <>
-                            <tr key={r.id}>
-                                <td>{r.requirement}</td>
-                                <td>{r.course}</td>
-                                <td>{r.altCourse}</td>
-                            </tr>
-                        </>
-                    ))}
-                        <tr className="justify-content-center">
-                            <td className="justify-content-center" colSpan={3}>
-                                <MarkdownPreview source={plan.notes} />
-                            </td>
+                      <>
+                        <tr key={r.id}>
+                          <td>{r.requirement}</td>
+                          <td>{r.course}</td>
+                          <td>{r.altCourse}</td>
                         </tr>
-                    </tbody>
+                      </>
+                    ))}
+                  </tbody>
                 </Table>
-            </Card.Body>
-            <Card.Footer>
-                <Link to={`/plans/${plan.id}/edit`}>
-                    <Button style={{ borderRadius: "0" }} variant="primary" href={`/plans/${plan.id}/edit`}>Edit Plan</Button>
-                </Link>
-                <Link to={`/students/${student.id}`}>
-                    <Button style={{ borderRadius: "0", marginLeft: "10px" }} variant="secondary" href={`/students/${student.id}`}>Back to Student</Button>
-                </Link>
-            </Card.Footer>
-        </Card>
-        
-    );
+              </Card.Body>
+            </Card>
+            <Table borderless style={{ marginTop: "0" }}>
+              <Card style={{ marginTop: "0" }}>
+                <Card.Header style={{ marginTop: "0" }}>
+                  <Card.Title>Notes</Card.Title>
+                </Card.Header>
+                <Card.Body>
+                  <tr className="justify-content-center">
+                    <td className="justify-content-center" colSpan={3}>
+                      <MarkdownPreview source={plan.notes} />
+                    </td>
+                  </tr>
+                </Card.Body>
+              </Card>
+            </Table>
+          </td>
+        </tr>
+      </tbody>
+    </Table>
+  );
 }
-
 
 export default ViewPlan;

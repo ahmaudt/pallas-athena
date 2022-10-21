@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 import AcademicPlan from "./AcademicPlan";
 import { Link } from "react-router-dom";
 
-function PlanList({ student, plans, onSelectPlan }) {
+function StudentPlanList({ student, plans, onSelectPlan, onDeletePlan }) {
   const studentPlans = plans.filter((pl) => pl.studentId === student.id);
   
   const planList = studentPlans.map((p) => {
-    return <AcademicPlan plan={p} key={p.id} currentTerm={p.currentTerm} advisingTerm={p.advisingTerm} onSelectPlan={onSelectPlan} student={student} />
+    return <AcademicPlan plan={p} key={p.id} currentTerm={p.currentTerm} advisingTerm={p.advisingTerm} onSelectPlan={onSelectPlan} student={student} onDeletePlan={onDeletePlan} />
   });
 
     return (
@@ -32,6 +32,7 @@ function PlanList({ student, plans, onSelectPlan }) {
                             <th>Term Advised For</th>
                             <th>View Plan</th>
                             <th>Edit Plan</th>
+                            <th>Delete Plan</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -46,4 +47,4 @@ function PlanList({ student, plans, onSelectPlan }) {
     )
 }
 
-export default PlanList;
+export default StudentPlanList;

@@ -8,20 +8,22 @@ import {
   FormGroup
 } from "react-bootstrap";
 import CardHeader from "react-bootstrap/esm/CardHeader";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import StudentInfoForm from "./StudentInfoForm";
 import { FcDeleteRow, VscOutput } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function NewAcademicPlanForm({ onAddPlan, student }) {
   const [rowCount, setRowCount] = useState(4);
+
+  const navigate = useNavigate();
 
   const [plan, setPlan] = useState({
     studentId: student.id,
     advisingTerm: student.advisingTerm,
     currentTerm: student.currentTerm,
     recommendations: [],
-    notes: "write notes here",
+    notes: " ",
   });
 
   function handleSubmit(e) {
@@ -34,7 +36,11 @@ function NewAcademicPlanForm({ onAddPlan, student }) {
       body: JSON.stringify(plan),
     })
       .then((r) => r.json())
-      .then((data) => onAddPlan(data));
+      .then((data) => {
+        onAddPlan(data);
+        navigate(`/plans/${data.id}/view`);
+      })
+      
   }
 
   function handleAddRecommendation(i, name, value) {
@@ -64,11 +70,6 @@ function NewAcademicPlanForm({ onAddPlan, student }) {
       });
     } 
   }
-
-  function handleAddNote(notes) {
-    setPlan(...plan.notes, notes)
-  }
-
 
   function handleAddRow() {
     let newRow = { requirement: "", course: "", altCourse: "" };
@@ -151,9 +152,9 @@ function NewAcademicPlanForm({ onAddPlan, student }) {
             <Button variant="success" type="submit">
               Save
             </Button>
-            <Link to={`/generated-plan`}>
+            <Link to={`/plans/${plan.id}/view`}>
               <Button style={{ marginLeft: "5px" }} variant="secondary" type="button">
-                Create Plan
+                View Plan
               </Button>
             </Link>
           </Card.Footer>

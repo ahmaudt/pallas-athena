@@ -181,42 +181,6 @@
           "requirement": "major requirement"
         }
       ]
-    },
-    {
-      "studentId": 1,
-      "advisingTerm": "Summer 2023",
-      "currentTerm": "Fall 2022",
-      "recommendations": [
-        {
-          "id": 1,
-          "requirement": "Major",
-          "course": "HDFS 4330",
-          "altCourse": "HDFS 3920"
-        },
-        {
-          "id": 2,
-          "requirement": "Major required: Adolescent Development",
-          "course": "HDFS 3701E",
-          "altCourse": "HDFS 3700E"
-        }
-      ],
-      "notes": "HDFS 3701E and HDFS 3701 are the same course, except that 3700E has a service-learning component.",
-      "id": 4
-    },
-    {
-      "studentId": 1,
-      "advisingTerm": "Summer 2023",
-      "currentTerm": "Fall 2022",
-      "recommendations": [
-        {
-          "id": 1,
-          "requirement": "HDFS Minor",
-          "course": "HDFS 2100",
-          "altCourse": "HDFS 2200"
-        }
-      ],
-      "notes": "# This is a header 1\n\n### This is a header 3\n\n| this is a table column | and a second table column |\n| :-------------------- | --------------------------: |\n| some stuff | and some other stuff |",
-      "id": 5
     }
   ]
 }

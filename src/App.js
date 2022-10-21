@@ -83,7 +83,11 @@ function App() {
   }
 
   function handleAddPlan(plan) {
-    const updatedPlans = [...plans, plan];
+    setPlans((plans) => [...plans, plan]);
+  }
+
+  function handleDeletePlan(plan) {
+    const updatedPlans = plans.filter((p) => p.id !== plan.id);
     setPlans(updatedPlans);
   }
 
@@ -107,7 +111,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route exact path="/students" element={<StudentList students={students} onSelectStudent={handleSelectStudent} onSelectPlan={setWorkingPlan} />} />
-              <Route exact path="/students/:id" element={<StudentDetail plans={plans} student={selectedStudent} onEditStudent={handleEditStudent} onSelectPlan={setWorkingPlan} />} />
+              <Route exact path="/students/:id" element={<StudentDetail plans={plans} student={selectedStudent} onEditStudent={handleEditStudent} onSelectPlan={setWorkingPlan} onDeletePlan={handleDeletePlan} />} />
               <Route path="/plans/:id/edit" element={<AcademicPlanForm onUpdatePlan={handleChangeForm} student={selectedStudent} />} />
               <Route path="/plans/:id/view" element={<ViewPlan />} />
               <Route path="/new-student" element={<NewStudentForm onAddStudent={handleAddStudent} />} />
