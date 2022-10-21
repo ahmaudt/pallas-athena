@@ -181,6 +181,27 @@
           "requirement": "major requirement"
         }
       ]
+    },
+    {
+      "studentId": 1,
+      "advisingTerm": "Summer 2023",
+      "currentTerm": "Fall 2022",
+      "recommendations": [
+        {
+          "id": 1,
+          "requirement": "Major",
+          "course": "HDFS 4330",
+          "altCourse": "HDFS 3920"
+        },
+        {
+          "id": 2,
+          "requirement": "Major required: Adolescent Development",
+          "course": "HDFS 3701E",
+          "altCourse": "HDFS 3700E"
+        }
+      ],
+      "notes": "HDFS 3701E and HDFS 3701 are the same course, except that 3700E has a service-learning component.",
+      "id": 4
     }
   ]
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 
-function AcademicPlan({ plan, onSelectPlan }) {
+function AcademicPlan({ plan, onSelectPlan, student }) {
     return (
         <tr>
             <td>{plan.currentTerm}</td>

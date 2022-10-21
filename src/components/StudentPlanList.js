@@ -10,7 +10,7 @@ function PlanList({ student, plans, onSelectPlan }) {
   const studentPlans = plans.filter((pl) => pl.studentId === student.id);
   
   const planList = studentPlans.map((p) => {
-    return <AcademicPlan plan={p} key={p.id} currentTerm={p.currentTerm} advisingTerm={p.advisingTerm} onSelectPlan={onSelectPlan} />
+    return <AcademicPlan plan={p} key={p.id} currentTerm={p.currentTerm} advisingTerm={p.advisingTerm} onSelectPlan={onSelectPlan} student={student} />
   });
 
     return (

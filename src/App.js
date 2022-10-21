@@ -112,7 +112,7 @@ function App() {
               <Route path="/plans/:id/view" element={<ViewPlan />} />
               <Route path="/new-student" element={<NewStudentForm onAddStudent={handleAddStudent} />} />
               <Route path="/new-plan" element={<NewAcademicPlanForm onAddPlan={handleAddPlan} student={selectedStudent} />} />
-              <Route path="/generated-plan" element={<ViewPlan />} />
+              <Route path="/generated-plan" element={<ViewPlan student={selectedStudent} />} />
             </Routes>
           </Col>
           <Col sm="auto"></Col>
