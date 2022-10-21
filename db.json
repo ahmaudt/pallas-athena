@@ -95,7 +95,7 @@
         {
           "requirement": "Physical Science",
           "course": "PHYS 1111-1111L",
-          "altCourse": "",
+          "altCourse": "CHEM 1211-1211L",
           "id": 4
         }
       ]
@@ -181,76 +181,6 @@
           "requirement": "major requirement"
         }
       ]
-    },
-    {
-      "studentId": 1,
-      "advisingTerm": "Summer 2023",
-      "currentTerm": "Fall 2022",
-      "recommendations": [
-        {
-          "id": 1,
-          "requirement": "HDFS Minor",
-          "course": "HDFS 2100",
-          "altCourse": "HDFS 2200"
-        }
-      ],
-      "notes": "this is a note for the plan",
-      "id": 4
-    },
-    {
-      "studentId": 1,
-      "advisingTerm": "Summer 2023",
-      "currentTerm": "Fall 2022",
-      "recommendations": [
-        {
-          "id": 1,
-          "requirement": "test",
-          "course": "test",
-          "altCourse": "test"
-        }
-      ],
-      "notes": "test",
-      "id": 5
-    },
-    {
-      "studentId": 1,
-      "advisingTerm": "Summer 2023",
-      "currentTerm": "Fall 2022",
-      "recommendations": [
-        {
-          "id": 1,
-          "requirement": "test",
-          "course": "test",
-          "altCourse": "test"
-        },
-        {
-          "id": 2,
-          "requirement": "test",
-          "course": "test",
-          "altCourse": "test"
-        },
-        {
-          "id": 3,
-          "requirement": "test",
-          "course": "test",
-          "altCourse": "test"
-        }
-      ],
-      "notes": "I wrote some notes",
-      "id": 6
-    },
-    {
-      "studentId": 2,
-      "recommendations": [
-        {
-          "id": 1,
-          "requirement": "HDFS Minor",
-          "course": "HDFS 2100",
-          "altCourse": "HDFS 2200"
-        }
-      ],
-      "notes": "i made some notes",
-      "id": 7
     }
   ]
 }

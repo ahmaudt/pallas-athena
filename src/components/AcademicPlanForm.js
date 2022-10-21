@@ -12,6 +12,7 @@ import CardHeader from "react-bootstrap/esm/CardHeader";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import StudentInfoForm from "./StudentInfoForm";
+import { Link } from "react-router-dom";
 
 function AcademicPlanForm({ student, onUpdatePlan }) {
   const params = useParams();
@@ -175,8 +176,13 @@ function AcademicPlanForm({ student, onUpdatePlan }) {
           </Card.Body>
           <Card.Footer>
             <Button variant="primary" type="submit">
-              Submit
+              Save
             </Button>
+            <Link to={`/students/${student.id}`}>
+              <Button style={{ marginLeft: "10px" }} variant="secondary" type="button">
+                Cancel
+              </Button>
+            </Link>
           </Card.Footer>
         </Card>
       </Col>

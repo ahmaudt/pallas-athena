@@ -31,6 +31,7 @@ function PlanList({ student, plans, onSelectPlan }) {
                             <th>Term Created</th>
                             <th>Term Advised For</th>
                             <th>View Plan</th>
+                            <th>Edit Plan</th>
                           </tr>
                         </thead>
                         <tbody>
