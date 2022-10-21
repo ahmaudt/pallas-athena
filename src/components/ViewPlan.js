@@ -3,7 +3,7 @@ import { Button, Card, Table } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import MarkdownPreview from '@uiw/react-markdown-preview';
 
 function ViewPlan() {
     const params = useParams();
@@ -57,7 +57,9 @@ function ViewPlan() {
                         </>
                     ))}
                         <tr className="justify-content-center">
-                            <td className="justify-content-center" colSpan={3}>{plan.notes}</td>
+                            <td className="justify-content-center" colSpan={3}>
+                                <MarkdownPreview source={plan.notes} />
+                            </td>
                         </tr>
                     </tbody>
                 </Table>

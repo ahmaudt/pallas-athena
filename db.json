@@ -202,6 +202,21 @@
       ],
       "notes": "HDFS 3701E and HDFS 3701 are the same course, except that 3700E has a service-learning component.",
       "id": 4
+    },
+    {
+      "studentId": 1,
+      "advisingTerm": "Summer 2023",
+      "currentTerm": "Fall 2022",
+      "recommendations": [
+        {
+          "id": 1,
+          "requirement": "HDFS Minor",
+          "course": "HDFS 2100",
+          "altCourse": "HDFS 2200"
+        }
+      ],
+      "notes": "# This is a header 1\n\n### This is a header 3",
+      "id": 5
     }
   ]
 }
