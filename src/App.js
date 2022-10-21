@@ -41,15 +41,12 @@ function App() {
     });
 
     function handleChangeForm(recommendations) {
-      // setWorkingPlan(...workingPlan.recommendations, recommendations);
       setWorkingPlan((workingPlan) => ({
         ...workingPlan,
         recommendations: recommendations,
       }));
     }
   
-  // selectedStudent is the student that is currently selected from the list
-
   useEffect(() => {
     fetch("http://localhost:6001/students")
       .then((r) => r.json())
@@ -66,8 +63,6 @@ function App() {
     setSelectedStudent(student);
   };
 
-  // make a fetch request to the backend to get the student with the id
-  // this makes the student show up in the StudentDetail component
   function handleEditStudent(student) {
     const updatedStudents = students.map((s) => {
       if (s.id === student.id) return student;
@@ -89,6 +84,15 @@ function App() {
   function handleDeletePlan(plan) {
     const updatedPlans = plans.filter((p) => p.id !== plan.id);
     setPlans(updatedPlans);
+  }
+
+  function handleEditStudent(student) {
+    const updatedStudents = students.map((s) => {
+      if (s.id === student.id) return student;
+      return s;
+    });
+    setSelectedStudent(student);
+    setStudents(updatedStudents);
   }
 
   return (
