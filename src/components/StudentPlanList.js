@@ -1,8 +1,6 @@
 import React from "react";
 import { Button, Card, Col, Row, Table} from "react-bootstrap";
 import CardHeader from "react-bootstrap/esm/CardHeader";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import AcademicPlan from "./AcademicPlan";
 import { Link } from "react-router-dom";
 

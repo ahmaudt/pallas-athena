@@ -1,9 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Button, Card, Col, Container, Form, NavDropdown, Row, Table } from "react-bootstrap";
-import { NavLink, Link, Switch, Routes, Route } from "react-router-dom";
+import { Container, NavDropdown, Row } from "react-bootstrap";
+import { NavLink, Routes, Route } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
-import CardHeader from "react-bootstrap/esm/CardHeader";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import StudentDetail from "./components/StudentDetail";
